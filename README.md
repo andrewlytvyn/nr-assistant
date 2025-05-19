@@ -1,3 +1,4 @@
+# Forked from FlowFuse/nr-assistant
 # FlowFuse Node-RED Assistant
 
 A Node-RED plugin to assist FlowFuse users.
