@@ -8,11 +8,25 @@ module.exports = (RED) => {
             '*': { exportable: true }
         },
         onadd: function () {
-            const assistantSettings = RED.settings.flowforge?.assistant || { enabled: false }
-            const clientSettings = {
-                enabled: assistantSettings.enabled !== false && !!assistantSettings.url,
-                requestTimeout: assistantSettings.requestTimeout || 60000
+    const assistantSettings = {
+                enabled: process.env.NR_ASSISTANT_ENABLED
+                    ? process.env.NR_ASSISTANT_ENABLED === 'true'
+                    : RED.settings.flowforge?.assistant?.enabled ?? false,
+        
+                url: process.env.NR_ASSISTANT_URL || RED.settings.flowforge?.assistant?.url || '',
+        
+                token: process.env.NR_ASSISTANT_TOKEN || RED.settings.flowforge?.assistant?.token || '',
+        
+                requestTimeout: parseInt(
+                    process.env.NR_ASSISTANT_TIMEOUT || RED.settings.flowforge?.assistant?.requestTimeout || '60000'
+                )
             }
+        
+            const clientSettings = {
+                enabled: assistantSettings.enabled && !!assistantSettings.url,
+                requestTimeout: assistantSettings.requestTimeout
+            }
+
             RED.comms.publish('nr-assistant/initialise', clientSettings, true /* retain */)
 
             if (!assistantSettings || !assistantSettings.enabled) {
