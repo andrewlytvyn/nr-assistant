@@ -1,7 +1,7 @@
 {
-    "name": "@flowfuse/nr-assistant",
+    "name": "@lav93/nr-assistant",
     "version": "0.1.3",
-    "description": "FlowFuse Node-RED assistant plugin",
+    "description": "fork FlowFuse Node-RED assistant plugin",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 0",
@@ -18,10 +18,10 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/FlowFuse/nr-assistant.git"
+        "url": "git+https://github.com/andrewlytvyn/nr-assistant.git"
     },
     "bugs": {
-        "url": "https://github.com/FlowFuse/nr-assistant/issues"
+        "url": "https://github.com/andrewlytvyn/nr-assistant/issues"
     },
     "homepage": "https://github.com/FlowFuse/nr-assistant#readme",
     "author": "FlowFuse Inc.",
